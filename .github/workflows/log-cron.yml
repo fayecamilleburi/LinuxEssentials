@@ -3,10 +3,9 @@ name: Log Time Job
 on:
   schedule:
     - cron: "*/5 * * * *"
-  workflow_dispatch:
 
 permissions:
-  contents: write  # Grants permission to push changes
+  contents: write  # ✅ Ensures push permission for GitHub Actions
 
 jobs:
   log_time:
@@ -16,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}  #  Use GitHub Token
+          token: ${{ secrets.GITHUB_TOKEN }}  # ✅ Ensures authentication for pushing changes
 
       - name: Run logging script
         run: |
